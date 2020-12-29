@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'CI taty',
-      home: MyHomePage(title: 'CI taty', author: 'CI author', source: 'CI source'),
+      home: MyHomePage(
+          title: 'CI taty', author: 'CI author', source: 'CI source'),
     );
   }
 }
@@ -38,8 +39,10 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) =>
-                          DetailPage(title: this.widget.title, author: this.widget.author, source: this.widget.source)));
+                      builder: (context) => DetailPage(
+                          title: this.widget.title,
+                          author: this.widget.author,
+                          source: this.widget.source)));
             }));
   }
 }
@@ -58,33 +61,34 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.black,
-        child: ListView(
-      children: [
-        Row(children: [
-          Text(widget.title,
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white))
-        ]),
-        Row(children: [
-          Text(widget.author,
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.grey)),
-          Text(widget.source,
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.normal,
-                  color: Colors.grey))
-        ])
-      ],
-
-      /*onTap: () {
+        color: Colors.black,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+                child: Text(widget.title,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white))),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(widget.author,
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey)),
+              SizedBox(width: 20),
+              Text(widget.source,
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey))
+            ])
+          ],
+          /*onTap: () {
               Navigator.pop(context);
             }*/
-    ));
+        ));
   }
 }
